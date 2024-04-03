@@ -1,6 +1,7 @@
 import React from 'react';
 import { IMAGE_URL } from '../common/constant';
 import '../styles/Common.scss';
+import '../styles/Background.scss';
 
 function Background({ children }) {
     return (
