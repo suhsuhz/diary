@@ -32,7 +32,7 @@ body::before {
     right: -120px;
     top: 0;
     z-index: -1;
-    animation: move 0.7s infinite alternate;
+    animation: move 0.6s infinite alternate;
 }
 
 .main {
@@ -103,7 +103,7 @@ body::before {
 }
 @keyframes move {
     0% {
-        top: -9vh;
+        top: -7vh;
     }
     100% {
         top: -6vh;
