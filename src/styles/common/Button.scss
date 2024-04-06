@@ -1,0 +1,15 @@
+@import './../Common.scss';
+
+.Button {
+    padding: 5px 10px;
+    color: $fontBlueColor;
+    font-weight: bold;
+    border: 2px solid $fontBlueColor;
+    border-radius: 5px;
+}
+
+.Button:hover {
+    background-color: $fontBlueColor;
+    color: #fff;
+    cursor: pointer;
+}

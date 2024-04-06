@@ -1,0 +1,27 @@
+@import './Common.scss';
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    color: $fontBlueColor;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0 15px;
+}
+.Header .logo img {
+    width: 35px;
+    height: 30px;
+}
+.Header .headerText {
+    font-size: 1.5rem;
+}
+
+.Header .headerButton {
+    font-size: 1rem;
+    cursor: pointer;
+}
+.Header .headerButton:hover {
+    color: #fff;
+}
