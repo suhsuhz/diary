@@ -3,9 +3,10 @@ import Background from "../Background";
 import DatePicker from "../common/DatePicker";
 import Emotion from "../common/Emotion";
 import Button from '../common/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDiary, resetWritingSagaRequested } from '../../redux/slices/diarySlice';
+import { setHeader } from '../../redux/slices/headerSlice';
 
 function Write() {
     const [substance, setSubstance] = useState('');
@@ -13,6 +14,10 @@ function Write() {
 
     const selectedDiaryId = useSelector((state) => state.diary.selectedDiaryId);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setHeader({ text: '목록', url: '/' }));
+    }, []);
 
     const saveDiary = () => {
         if (writingDiary.date === '') {
