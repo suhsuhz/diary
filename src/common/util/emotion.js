@@ -30,4 +30,13 @@ export const emotionList = [
         emotion_img: IMAGE_URL + `/emotion/icon_sad.png`,
         emotion_descript: "슬픔"
     },
-]
+];
+
+export const emotionFileNameById = {
+    1: 'icon_happy.png',
+    2: 'icon_normal.png',
+    3: 'icon_tired.png',
+    4: 'icon_bad.png',
+    5: 'icon_angry.png',
+    6: 'icon_sad.png',
+};

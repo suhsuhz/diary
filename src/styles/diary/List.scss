@@ -1,0 +1,45 @@
+@import './../Common.scss';
+
+.List .item {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.List .item:not(:last-child) {
+    margin-bottom: 10px;
+}
+.List .item:hover {
+    transform: scale(1.01);
+    box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.List .item .itemHead {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+.List .item .itemHead .emotion {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.List .item .itemHead .emotion img {
+    width: 100%;
+    height: 100%;
+}
+.List .item .itemHead .date {
+    font-weight: bold;
+}
+.List .item .itemHead .date .ymd {
+    margin-right: 5px;
+}
+
+.List .itemContent {
+    padding: 5px 5px 0 5px;
+    white-space: pre;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

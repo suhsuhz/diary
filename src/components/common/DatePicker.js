@@ -3,12 +3,14 @@ import 'react-datepicker/dist/react-datepicker.module.css';
 import '../../styles/common/DatePicker.scss';
 import { selectedDate } from "../../redux/slices/diarySlice";
 import { useDispatch, useSelector } from 'react-redux';
+import { formatISO } from "date-fns";
 
-function DatePicker({ date }) {
+function DatePicker() {
     const dispatch = useDispatch();
     const writingDiary = useSelector((state) => state.diary.writingDiary);
     const handleClickDate = (date) => {
-        dispatch(selectedDate(date));
+        const isoDateString = formatISO(date);
+        dispatch(selectedDate(isoDateString));
     }
 
     return (

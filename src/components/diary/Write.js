@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDiary, resetWritingSagaRequested } from '../../redux/slices/diarySlice';
 import { setHeader } from '../../redux/slices/headerSlice';
+import { formatISO } from "date-fns";
 
 function Write() {
     const [substance, setSubstance] = useState('');
@@ -20,10 +21,6 @@ function Write() {
     }, []);
 
     const saveDiary = () => {
-        if (writingDiary.date === '') {
-            alert("날짜를 선택해주세요");
-            return;
-        }
         if (writingDiary.emotion === '') {
             alert("감정을 선택해주세요");
             return;
@@ -35,7 +32,7 @@ function Write() {
 
         const data = {
             id: writingDiary.id,
-            date: writingDiary.date,
+            date: (writingDiary.date) ? writingDiary.date : formatISO(new Date()),
             emotion: writingDiary.emotion,
             substance: substance
         };
@@ -64,7 +61,7 @@ function Write() {
                     ></textarea>
                 </section>
                 <section className='button'>
-                    {selectedDiaryId === null ? (
+                    {writingDiary.id === '' ? (
                         <Button
                             text={'저장'}
                             onClick={saveDiary}
