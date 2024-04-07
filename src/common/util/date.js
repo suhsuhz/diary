@@ -10,7 +10,6 @@ export const setDateData = (date) => {
             time: time
         }
     } catch (error) {
-        console.log(date);
         return {
             ymd: '',
             time: ''
