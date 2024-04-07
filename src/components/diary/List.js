@@ -26,27 +26,33 @@ function List() {
     return (
         <Background>
             <article className="List">
-                {diaryList.map((diary, index) => (
-                    <div className="item"
-                        key={index}
-                        onClick={() => (handleItemClick(diary.id))} >
-                        <div className="itemHead">
-                            <div className="emotion">
-                                <img src={`${IMAGE_URL}/emotion/${emotionFileNameById[diary.emotion]}`} />
-                            </div>
-                            <div className="date">
-                                <span className='ymd'>{setDateData(diary.date).ymd}</span>
-                                <span className='time'>{setDateData(diary.date).time}</span>
-                            </div>
-                        </div>
-                        <div className="itemContent">
-                            {diary.substance}
-                        </div>
+                {diaryList.length < 1 ? (
+                    <div className="noDiaryMessage">
+                        일기를 작성해보세요 :)<br />
+                        해당 일기는 local storage에만 저장됩니다.
                     </div>
-                )
+                ) : (
+                    diaryList.map((diary, index) => (
+                        <div className="item"
+                            key={index}
+                            onClick={() => handleItemClick(diary.id)}>
+                            <div className="itemHead">
+                                <div className="emotion">
+                                    <img src={`${IMAGE_URL}/emotion/${emotionFileNameById[diary.emotion]}`} />
+                                </div>
+                                <div className="date">
+                                    <span className='ymd'>{setDateData(diary.date).ymd}</span>
+                                    <span className='time'>{setDateData(diary.date).time}</span>
+                                </div>
+                            </div>
+                            <div className="itemContent">
+                                {diary.substance}
+                            </div>
+                        </div>
+                    ))
                 )}
             </article>
-        </Background>
+        </Background >
     );
 }
 
