@@ -5,13 +5,15 @@ import Emotion from "../common/Emotion";
 import Button from '../common/Button';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createDiary, resetWritingSagaRequested } from '../../redux/slices/diarySlice';
+import { createDiary, resetWritingSagaRequested, updateDiary } from '../../redux/slices/diarySlice';
 import { setHeader } from '../../redux/slices/headerSlice';
 import { formatISO } from "date-fns";
+import { useNavigate } from 'react-router-dom';
 
 function Write() {
-    const [substance, setSubstance] = useState('');
+    const navigate = useNavigate();
     const writingDiary = useSelector((state) => state.diary.writingDiary);
+    const [substance, setSubstance] = useState(writingDiary.substance);
 
     const dispatch = useDispatch();
 
@@ -23,7 +25,9 @@ function Write() {
         };
     }, []);
 
-    const saveDiary = () => {
+    const saveDiary = (type) => {
+        if (!window.confirm("일기를 저장하시겠습니까?")) return;
+
         if (writingDiary.emotion === '') {
             alert("감정을 선택해주세요");
             return;
@@ -39,8 +43,15 @@ function Write() {
             emotion: writingDiary.emotion,
             substance: substance
         };
-        dispatch(createDiary(data));
+
+        if (type === 'new') {
+            dispatch(createDiary(data));
+        } else {
+            dispatch(updateDiary(data));
+        }
         clearData();
+
+        navigate('/');
     }
 
     const clearData = () => {
@@ -70,12 +81,15 @@ function Write() {
                 <section className='button'>
                     {writingDiary.id === '' ? (
                         <Button
+                            type={'positive'}
                             text={'저장'}
-                            onClick={saveDiary}
+                            onClick={() => saveDiary('new')}
                         />
                     ) : (
                         <Button
+                            type={'positive'}
                             text={'수정'}
+                            onClick={() => saveDiary('update')}
                         />
                     )}
 

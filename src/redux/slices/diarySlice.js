@@ -4,7 +4,8 @@ const initialState = {
     writingDiary: {
         id: '',
         emotion: '',
-        date: ''
+        date: '',
+        substance: ''
     },
     selectedDiary: {
         // id: '',
@@ -46,9 +47,19 @@ const diarySlice = createSlice({
         },
         updateDiary: (state, action) => {
             const diaryData = action.payload;
+
+            /* const selectedDiaryIndex = state.diaryList.indexOf(state.diaryList.filter(
+                (diary) => diary.id == diaryData.id
+            )); */
+
             return {
-                ...state.diaryList,
-                [diaryData.id]: diaryData
+                ...state,
+                diaryList: state.diaryList.map(
+                    (diary) => diary.id == diaryData.id ? {
+                        ...diaryData
+                    } : diary
+                )
+                //diaryList,[selectedDiaryIndex]: diaryData
             }
         },
         deleteDiary: (state, action) => {
@@ -68,6 +79,12 @@ const diarySlice = createSlice({
             );
             state.selectedDiary = diaryData[0];
         },
+        updateWritingDiary: (state, action) => {
+            state.writingDiary.id = state.selectedDiary.id;
+            state.writingDiary.emotion = state.selectedDiary.emotion;
+            state.writingDiary.date = state.selectedDiary.date;
+            state.writingDiary.substance = state.selectedDiary.substance;
+        },
         resetSelectedDiary: (state, action) => {
             state.selectedDiary = {};
         },
@@ -81,6 +98,7 @@ const diarySlice = createSlice({
             state.writingDiary.id = '';
             state.writingDiary.emotion = '';
             state.writingDiary.date = '';
+            state.writingDiary.substance = '';
         },
         // resetDiaryWritingSaga
         resetWritingSagaRequested: (state, action) => {
@@ -114,6 +132,7 @@ export const {
     updateDiary,
     deleteDiary,
     updateSelectedDiary,
+    updateWritingDiary,
     resetSelectedDiary,
     selectedEmotion,
     selectedDate,

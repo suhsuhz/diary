@@ -1,8 +1,8 @@
 import '../../styles/common/Button.scss'
 
-function Button({ text, onClick }) {
+function Button({ type, text, onClick }) {
     return (
-        <span className="Button"
+        <span className={["Button", type].join(" ")}
             onClick={onClick}>
             {text}
         </span>

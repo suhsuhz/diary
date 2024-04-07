@@ -2,14 +2,24 @@
 
 .Button {
     padding: 5px 10px;
-    color: $fontBlueColor;
     font-weight: bold;
-    border: 2px solid $fontBlueColor;
     border-radius: 5px;
 }
-
-.Button:hover {
+.Button.positive {
+    color: $fontBlueColor;
+    border: 2px solid $fontBlueColor;
+}
+.Button.positive:hover {
     background-color: $fontBlueColor;
+    color: #fff;
+    cursor: pointer;
+}
+.Button.negative {
+    color: $fontRedColor;
+    border: 2px solid $fontRedColor;
+}
+.Button.negative:hover {
+    background-color: $fontRedColor;
     color: #fff;
     cursor: pointer;
 }

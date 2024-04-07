@@ -1,11 +1,19 @@
 @import './../Common.scss';
 
+.Content .contentButton {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 30px;
+}
+.Content .contentButton .Button {
+    margin-left: 5px;
+}
+
 .Content .contentTop {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 50px;
 }
 .Content .contentTop .emotion {
     width: 80px;
@@ -23,6 +31,7 @@
 }
 
 .Content .contentBottom {
+    margin-top: 50px;
     padding: 0 30px;
     white-space: pre-wrap;
 }
