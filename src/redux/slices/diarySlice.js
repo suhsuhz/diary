@@ -6,6 +6,12 @@ const initialState = {
         emotion: '',
         date: ''
     },
+    selectedDiary: {
+        // id: '',
+        // emotion: '',
+        // date: '',
+        // substance: ''
+    },
     diaryList: [
         //{
         // id: number
@@ -54,8 +60,16 @@ const diarySlice = createSlice({
                 })
             }
         },
-        selectedDiary: (state, action) => {
-            state.writingDiary.id = action.payload;
+        updateSelectedDiary: (state, action) => {
+            const selectedDiaryId = action.payload;
+
+            const diaryData = state.diaryList.filter((diary) =>
+                diary.id == selectedDiaryId
+            );
+            state.selectedDiary = diaryData[0];
+        },
+        resetSelectedDiary: (state, action) => {
+            state.selectedDiary = {};
         },
         selectedEmotion: (state, action) => {
             state.writingDiary.emotion = action.payload;
@@ -99,7 +113,8 @@ export const {
     createDiary,
     updateDiary,
     deleteDiary,
-    selectedDiary,
+    updateSelectedDiary,
+    resetSelectedDiary,
     selectedEmotion,
     selectedDate,
     resetWritingDiary,

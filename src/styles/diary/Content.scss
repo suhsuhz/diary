@@ -1,0 +1,27 @@
+@import './../Common.scss';
+
+.Content .contentTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+.Content .contentTop .emotion {
+    width: 80px;
+    height: 80px;
+}
+.Content .contentTop .emotion img {
+    width: 100%;
+    height: 100%;
+}
+.Content .contentTop .date {
+    font-weight: bold;
+}
+.Content .contentTop .date .ymd {
+    margin-right: 5px;
+}
+
+.Content .contentBottom {
+    padding: 0 30px;
+}

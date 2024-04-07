@@ -13,11 +13,14 @@ function Write() {
     const [substance, setSubstance] = useState('');
     const writingDiary = useSelector((state) => state.diary.writingDiary);
 
-    const selectedDiaryId = useSelector((state) => state.diary.selectedDiaryId);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(setHeader({ text: '목록', url: '/' }));
+
+        return () => {
+            clearData();
+        };
     }, []);
 
     const saveDiary = () => {
@@ -37,6 +40,10 @@ function Write() {
             substance: substance
         };
         dispatch(createDiary(data));
+        clearData();
+    }
+
+    const clearData = () => {
         dispatch(resetWritingSagaRequested());
         setSubstance('');
     }

@@ -3,6 +3,7 @@ import Background from "../Background";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setHeader } from "../../redux/slices/headerSlice";
+import { updateSelectedDiary } from '../../redux/slices/diarySlice';
 import { IMAGE_URL } from "../../common/constant";
 import { emotionFileNameById } from "../../common/util/emotion";
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,7 @@ function List() {
     }, []);
 
     const handleItemClick = (diaryId) => {
+        dispatch(updateSelectedDiary(diaryId));
         navigate(`/content/${diaryId}`);
     }
 
