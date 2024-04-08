@@ -1,5 +1,8 @@
 @import './Common.scss';
 
+html {
+    overflow: hidden;
+}
 body {
     position: relative;
     display: flex;
@@ -50,6 +53,10 @@ body::before {
     overflow: auto;
     background-color: #cce7f3;
     border-radius: 15px 15px 0 0;
+
+    @media (max-width: $breakpoint-sm-mobile) {
+        width: 92vw;
+    }
 }
 .main .content {
     padding: 20px 10px;
@@ -75,17 +82,28 @@ body::before {
 .wave_2.left,
 .wave_3.left,
 .wave_4.left {
+    width: 600px;
+    height: 600px;
     left: -200px;
+
+    @media (max-width: $breakpoint-sm-mobile) {
+        width: 800px;
+        height: 800px;
+    }
 }
 .wave_1.right,
 .wave_2.right,
 .wave_3.right,
 .wave_4.right {
-    right: -200px;
-}
-.wave_1 {
     width: 600px;
     height: 600px;
+    right: -200px;
+
+    @media (max-width: $breakpoint-sm-mobile) {
+        display: none;
+    }
+}
+.wave_1 {
     position: absolute;
     top: 60vh;
     z-index: -1;
@@ -94,8 +112,6 @@ body::before {
     animation: wave 3s infinite linear;
 }
 .wave_2 {
-    width: 600px;
-    height: 600px;
     position: absolute;
     top: 70vh;
     z-index: -1;
@@ -104,8 +120,6 @@ body::before {
     animation: wave 5s infinite linear;
 }
 .wave_3 {
-    width: 600px;
-    height: 600px;
     position: absolute;
     top: 75vh;
     z-index: -1;
@@ -114,8 +128,6 @@ body::before {
     animation: wave 5s infinite linear;
 }
 .wave_4 {
-    width: 600px;
-    height: 600px;
     position: absolute;
     top: 85vh;
     z-index: -1;
