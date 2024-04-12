@@ -100,6 +100,22 @@ const diarySlice = createSlice({
             state.writingDiary.date = '';
             state.writingDiary.substance = '';
         },
+        updateDiaryOrderBy: (state, action) => {
+            const orderBy = action.payload;
+
+            const compare = (a, b) => {
+                if (orderBy === 'asc') { // 오래된순
+                    if (a.date > b.date) return 1;
+                    if (a.date === b.date) return 0;
+                    if (a.date < b.date) return -1;
+                } else { // 최신순
+                    if (a.date < b.date) return 1;
+                    if (a.date === b.date) return 0;
+                    if (a.date > b.date) return -1;
+                }
+            }
+            state.diaryList.sort(compare);
+        },
         // resetDiaryWritingSaga
         resetWritingSagaRequested: (state, action) => {
             state.resetDiarySaga = {
@@ -137,6 +153,7 @@ export const {
     selectedEmotion,
     selectedDate,
     resetWritingDiary,
+    updateDiaryOrderBy,
     // resetDiaryWritingSaga
     resetWritingSagaRequested,
     resetWritingSagaSucceeded,

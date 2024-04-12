@@ -1,5 +1,19 @@
 @import './../Common.scss';
 
+/*일기 정렬*/
+.List .orderDiary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+.List .orderDiary select {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+
+/* 일기 목록*/
 .List .item {
     padding: 10px;
     background-color: #fff;
