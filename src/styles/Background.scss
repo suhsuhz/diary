@@ -59,7 +59,8 @@ body::before {
     }
 }
 .main .content {
-    padding: 20px 10px 50px 10px;
+    padding: 20px 10px;
+    margin-bottom: 100px;
 }
 /*scroll 효과*/
 .main::-webkit-scrollbar {
