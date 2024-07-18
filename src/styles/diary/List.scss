@@ -1,13 +1,13 @@
 @import './../Common.scss';
 
 /*일기 정렬*/
-.List .orderDiary {
+.List .menu {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 10px 0;
 }
-.List .orderDiary select {
+.List .menu .orderDiary {
     border-radius: 5px;
     border: none;
     padding: 5px;
